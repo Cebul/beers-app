@@ -1,0 +1,62 @@
+@import 'mixins';
+
+$captionColor: #d68a08;
+
+.dialog {
+  .grid-container {
+    padding: 7% !important;
+
+    .beer-name {
+      font-size: 20px;
+      color: $captionColor;
+
+      @include sm {
+        font-size: 18px;
+        text-align: center;
+      }
+    }
+    .beer-tagline {
+      @include sm {
+        text-align: center;
+      }
+    }
+    .img-container {
+      @include sm {
+        text-align: center;
+      }
+    }
+    .beer-description {
+      margin-bottom: 10px;
+    }
+    .beer-img {
+      max-width: 50%;
+      height: auto;
+
+      @include sm {
+        max-width: 20%;
+        height: auto;
+      }
+    }
+    .divider {
+      height: 7px !important;
+      background-color: #dbc13d !important;
+      margin-right: 80% !important;
+    }
+    .caption-container {
+      margin-top: 10px;
+      padding-bottom: 10px;
+      .caption {
+        color: $captionColor;
+        font-size: 15px;
+        font-weight: 600;
+      }
+      .caption-value {
+        padding-right: 5px;
+        font-weight: 600;
+      }
+    }
+    .tips {
+      padding-bottom: 5%;
+    }
+  }
+}

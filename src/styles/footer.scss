@@ -1,0 +1,15 @@
+.footer-container {
+  height: 80px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #000;
+  text-align: center;
+  .powered {
+    font-size: 15px;
+    line-height: 80px;
+    color: #fff;
+    margin-bottom: 0;
+  }
+}
