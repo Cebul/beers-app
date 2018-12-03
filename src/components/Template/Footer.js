@@ -5,11 +5,13 @@ import '../../styles/footer.scss'
 
 const Footer = () => {
   return (
-    <Grid container className="footer-container">
-      <Grid item xs={12}>
-        <Typography className="powered">Powered by Kamil Cebula</Typography>
+    <footer>
+      <Grid container className="footer-container">
+        <Grid item xs={12}>
+          <Typography className="powered">Powered by Kamil Cebula</Typography>
+        </Grid>
       </Grid>
-    </Grid>
+    </footer>
   )
 }
 

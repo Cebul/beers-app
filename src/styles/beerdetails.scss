@@ -3,10 +3,10 @@
 $captionColor: #d68a08;
 
 .dialog {
-  .grid-container {
+  .dialog__grid {
     padding: 7% !important;
 
-    .beer-name {
+    .dialog__item {
       font-size: 20px;
       color: $captionColor;
 
@@ -15,20 +15,7 @@ $captionColor: #d68a08;
         text-align: center;
       }
     }
-    .beer-tagline {
-      @include sm {
-        text-align: center;
-      }
-    }
-    .img-container {
-      @include sm {
-        text-align: center;
-      }
-    }
-    .beer-description {
-      margin-bottom: 10px;
-    }
-    .beer-img {
+    .dialog__img {
       max-width: 50%;
       height: auto;
 
@@ -37,25 +24,38 @@ $captionColor: #d68a08;
         height: auto;
       }
     }
-    .divider {
+    .dialog__tagline {
+      @include sm {
+        text-align: center;
+      }
+    }
+    .dialog__img__container {
+      @include sm {
+        text-align: center;
+      }
+    }
+    .dialog__beer__description {
+      padding-bottom: 10px;
+    }
+    .dialog_divider {
       height: 7px !important;
       background-color: #dbc13d !important;
       margin-right: 80% !important;
     }
-    .caption-container {
+    .dialog__beer__details {
       margin-top: 10px;
       padding-bottom: 10px;
-      .caption {
+      .dialog__beer__details__capiton {
         color: $captionColor;
         font-size: 15px;
         font-weight: 600;
       }
-      .caption-value {
+      .dialog__beer__details__capiton__value {
         padding-right: 5px;
         font-weight: 600;
       }
     }
-    .tips {
+    .dialog__beer__description--tips {
       padding-bottom: 5%;
     }
   }

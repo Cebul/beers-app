@@ -4,15 +4,17 @@ import Grid from '@material-ui/core/Grid'
 import '../../styles/topbar.scss'
 
 const TopBar = () => (
-  <Grid container className="top-bar">
-    <Grid item xs={12}>
-      <Router>
-        <Link to='/' className="logo">
-          BEER<span className="app-logo">APP</span>
-        </Link>
-      </Router>
+  <header className="top-bar">
+    <Grid container>
+      <Grid item xs={12}>
+        <Router>
+          <Link to='/' className="logo">
+            BEER<span className="app-logo">APP</span>
+          </Link>
+        </Router>
+      </Grid>
     </Grid>
-  </Grid>
+  </header>
 )
 
 export default TopBar

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
+import axios from 'axios'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 import SingleBeer from './SingleBeer'
@@ -13,55 +14,54 @@ export default class Beers extends Component {
     super(props)
 
     this.state = {
-      beers: '',
-      hasMore: true
+      beers: [],
+      hasMore: true,
     }
   }
 
-  //fetching data from api
   componentDidMount() {
-    const url='https://api.punkapi.com/v2/beers?page=1&per_page=20'
+    const url = 'https://api.punkapi.com/v2/beers?page=1&per_page=20'
 
-    fetch(url)
-      .then((response) => {
-        return response.json()
-      })
-      .then((data) => {
+    axios.get(url)
+      .then((response) =>  {
         this.setState({
-          beers: data
+          beers: response.data
         })
       })
       .catch((error) => {
         console.log(error)
       })
-  }
-  //mapping beers array
+  } //componentDidMount
+
   renderBeers() {
-    return this.state.beers.map((item) => (
+    const { beers } = this.state
+
+    return beers.map((item) => (
       <Grid item xs={ 12 } sm={ 6 } md={ 4 } lg={ 3 } key={ item.id } align="center">
         <Router>
           <Link
             key={ item.id }
             to={{
               pathname: `/details/${ item.id }`,
-              state: { modal: true }
             }}
           >
             <SingleBeer
               key={ item.id }
               item={ item }
-              beers={ this.state.beers }
+              beers={ beers }
              />
           </Link>
         </Router>
       </Grid>
     ))
   }
-  //arrow function to load more items for infinite scroll
-  loadItems = () => {
-    let url='https://api.punkapi.com/v2/beers?page='+Math.floor((this.state.beers.length/10)+1)+'&per_page=10'
 
-    if(this.state.beers.length >= 80) {
+  loadMoreItems = () => {
+    const { beers } = this.state
+    const page = Math.floor((beers.length/10)+1)
+    const url=`https://api.punkapi.com/v2/beers?page=${page}&per_page=10`
+
+    if(beers.length >= 60) {
       this.setState({ hasMore: false })
       return
     }
@@ -71,7 +71,7 @@ export default class Beers extends Component {
       })
       .then((data) => {
         this.setState({
-          beers: this.state.beers.concat(data)
+          beers: beers.concat(data)
         })
       })
       .catch((error) => {
@@ -79,9 +79,18 @@ export default class Beers extends Component {
       })
   }
 
+  isEmpty = obj => {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+  }
+
   render() {
+    const { beers, hasMore  } = this.state
     //checking if content is already, if not return loader
-    if(!this.state.beers) return (
+    if(this.isEmpty(beers)) return (
       <div className="loader">
         <CircularProgress size={150}/>
       </div>
@@ -89,18 +98,18 @@ export default class Beers extends Component {
 
     return (
       <InfiniteScroll
-        dataLength={this.state.beers.length}
-        next={this.loadItems}
-        hasMore={this.state.hasMore}
-        loader={<div style={{textAlign: "center"}}><CircularProgress size={50}/></div>}
+        dataLength={ beers.length }
+        next={ this.loadMoreItems }
+        hasMore={ hasMore }
+        loader={<div className="sm-loader"><CircularProgress size={ 50 }/></div>}
         endMessage={
-          <p style={{textAlign: "center"}}>
+          <p className="sm-loader">
             <b>End of content!</b>
           </p>
         }
       >
-        <Grid container>
-          { this.renderBeers() }
+        <Grid container className="beers-container">
+            { this.renderBeers() }
         </Grid>
       </InfiniteScroll>
     ) //return

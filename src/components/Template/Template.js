@@ -3,7 +3,7 @@ import React from 'react'
 import TopBar from './TopBar'
 import Beers from '../Beers/Beers'
 import Footer from './Footer'
-import '../../styles/beers.scss'
+import '../../styles/template.scss'
 
 
 const Template = (props) => {

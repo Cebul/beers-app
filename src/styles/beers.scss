@@ -1,11 +1,14 @@
-@import 'reset';
-
 .beers-container {
-  padding-bottom: 80px;
+  padding-bottom: 35px;
 }
 .loader {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+.sm-loader {
+  text-align: center;
+  padding-bottom: 35px;
+  height: 100px;
 }

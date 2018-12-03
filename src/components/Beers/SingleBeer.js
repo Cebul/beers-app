@@ -11,12 +11,10 @@ import "../../styles/singlebeer.scss"
 
 export default class SingleBeer extends Component {
 
-  // initialize state for modal component
   state = {
     open: false
   }
 
-  // function to toggle modal view
   handleToggle = () => {
     this.setState((prevState, props) => {
       return {
@@ -27,32 +25,31 @@ export default class SingleBeer extends Component {
 
   render() {
 
-    let { item } = this.props
+    const { item } = this.props
 
     return (
       <div>
-        {/* single beer card */}
         <Card
           className="card"
           onClick={ this.handleToggle }
         >
-          <CardActionArea className="card-action">
+          <CardActionArea className="card__action">
             <CardMedia
               image={ item.image_url }
               title="Beer Bottle"
-              className="card-media"
+              className="card__media"
             />
-            <CardContent className="card-content">
+            <CardContent className="card__content">
               <Typography
                 noWrap
-                className="beer-name"
+                className="card__name"
                 variant="h5"
               >
                 { item.name }
               </Typography>
               <Typography
                 noWrap
-                className="beer-tag"
+                className="card__name--tag"
               >
                 { item.tagline }
               </Typography>

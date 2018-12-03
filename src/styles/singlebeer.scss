@@ -3,21 +3,26 @@ $beerNameColor: #dbc13d;
 .card {
   height: 50vh;
   margin: 10px;
-  .card-action {
+  .card__action {
     height: 100%;
     line-height: 100px;
     padding: 20px;
-    .card-media {
+    .card__media {
       height: 70%;
       width: 100px;
       background-size: contain;
       vertical-align: middle;
     }
   }
-  .beer-name {
-    color: $beerNameColor !important;
-  }
-  .beer-tag {
+  .card__name {
+    color: $beerNameColor;
     text-align: center;
+    text-decoration: none;
+    .card__name--tag {
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+    }
   }
-}
+
+} // .card
